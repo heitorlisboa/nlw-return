@@ -16,3 +16,9 @@
       focus:ring-brand-500 focus:outline-none;
   }
 }
+
+@layer utilities {
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    @apply border-[6px] border-solid border-zinc-900 rounded-full;
+  }
+}
