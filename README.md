@@ -18,7 +18,12 @@ Projeto desenvolvido durante a **NLW Return**, evento de programação da Rocket
 - [x] Dia 01 &ndash; Concluído!
   - Setup do projeto web
   - Construção da base do widget de feedback
-- [ ] Dia 02
+- [x] Dia 02 &ndash; Concluído!
+  - Finalização do widget
+    - Escolha do tipo de feedback
+    - Conteúdo do feedback
+    - Funcionalidade de screenshot
+    - Tela de sucesso ao enviar o feedback
 - [ ] Dia 03
 - [ ] Dia 04
 - [ ] Dia 05
