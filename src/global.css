@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  font-family: Inter, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+@layer base {
+  html {
+    font-family: Inter, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    @apply bg-[#09090a] text-zinc-100;
+  }
+
+  :focus {
+    @apply focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900
+      focus:ring-brand-500 focus:outline-none;
+  }
 }
