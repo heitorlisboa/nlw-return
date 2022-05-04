@@ -6,10 +6,25 @@ function Widget() {
     <Popover className="fixed bottom-5 right-5">
       <Popover.Panel>Popover</Popover.Panel>
 
-      <Popover.Button className="bg-brand-500 hover:bg-brand-400 rounded-full p-3 text-white flex group">
+      <Popover.Button
+        className="
+          flex group
+          p-3
+          rounded-full
+          bg-brand-500 hover:bg-brand-400
+          text-white
+          transition-colors
+        "
+      >
         <ChatTeardropDots className="w-6 h-6" />
 
-        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-linear">
+        <span
+          className="
+            max-w-0 group-hover:max-w-xs
+            overflow-hidden
+            transition-all duration-500 ease-linear
+          "
+        >
           <span className="ml-2"></span>
           Feedback
         </span>
