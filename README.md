@@ -24,7 +24,9 @@ Projeto desenvolvido durante a **NLW Return**, evento de programação da Rocket
     - Conteúdo do feedback
     - Funcionalidade de screenshot
     - Tela de sucesso ao enviar o feedback
-- [ ] Dia 03
+- [x] Dia 03
+  - Construção do servidor da aplicação usando SOLID
+  - Adição de testes unitários
 - [ ] Dia 04
 - [ ] Dia 05
 
