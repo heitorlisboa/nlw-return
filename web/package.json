@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "commit": "cd .. && yarn commit"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.0",
