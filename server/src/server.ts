@@ -3,7 +3,7 @@ import cors from 'cors';
 import { router } from './router';
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT ?? 4000;
 
 // TODO: Change cors origin to the website address when it is hosted
 app.use(cors());

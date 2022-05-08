@@ -4,8 +4,10 @@
   "license": "GPL-3.0-only",
   "scripts": {
     "dev": "nodemon ./src/server.ts",
-    "commit": "cd .. && yarn commit",
-    "test": "jest"
+    "build": "tsc",
+    "start": "node ./dist/server.js",
+    "test": "jest",
+    "commit": "cd .. && yarn commit"
   },
   "dependencies": {
     "@prisma/client": "^3.13.0",
