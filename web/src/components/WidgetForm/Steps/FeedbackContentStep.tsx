@@ -1,9 +1,12 @@
 import { type ChangeEvent, type FormEvent, useState } from 'react';
 import { ArrowLeft } from 'phosphor-react';
 
+import { api } from '../../../lib/api';
+
 import { type FeedbackType, FEEDBACK_TYPES } from '..';
 import { CloseButton } from '../../CloseButton';
 import { ScreenshotButton } from '../ScreenshotButton';
+import { Loading } from '../../Loading';
 
 type FeedbackContentStepProps = {
   feedbackType: FeedbackType;
@@ -16,20 +19,29 @@ function FeedbackContentStep({
   onFeedbackRestart,
   onFeedbackSent,
 }: FeedbackContentStepProps) {
-  const { title, imageSource } = FEEDBACK_TYPES[feedbackType];
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [comment, setComment] = useState<string>('');
+  const [isSendingFeedback, setIsSendingFeedback] = useState(false);
+
+  const feedbackTypeInfo = FEEDBACK_TYPES[feedbackType];
 
   function handleTextareaChange(event: ChangeEvent<HTMLTextAreaElement>) {
     setComment(event.target.value);
   }
 
-  function handleFeedbackSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleFeedbackSubmit(event: FormEvent<HTMLFormElement>) {
     // Preventing the page from reloading
     event.preventDefault();
 
-    console.log({ comment: comment.trim(), screenshot });
+    setIsSendingFeedback(true);
 
+    await api.post('/feedbacks', {
+      type: feedbackTypeInfo.title,
+      comment: comment.trim(),
+      screenshot,
+    });
+
+    setIsSendingFeedback(false);
     onFeedbackSent();
   }
 
@@ -50,8 +62,8 @@ function FeedbackContentStep({
         </button>
 
         <span className="flex gap-2 items-center text-xl leading-6">
-          <img className="w-6 h-6" src={imageSource} alt="" />
-          {title}
+          <img className="w-6 h-6" src={feedbackTypeInfo.imageSource} alt="" />
+          {feedbackTypeInfo.title}
         </span>
 
         <CloseButton />
@@ -90,6 +102,7 @@ function FeedbackContentStep({
 
           <button
             className="
+              grid place-items-center
               bg-brand-500 hover:bg-brand-400 focus:bg-brand-400
               disabled:hover:bg-brand-500
               text-sm leading-6
@@ -99,9 +112,9 @@ function FeedbackContentStep({
               flex-1
             "
             type="submit"
-            disabled={!comment.trim()}
+            disabled={comment.trim().length === 0 || isSendingFeedback}
           >
-            Enviar feedback
+            {isSendingFeedback ? <Loading /> : 'Enviar feedback'}
           </button>
         </div>
       </form>
