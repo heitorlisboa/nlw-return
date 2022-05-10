@@ -2,8 +2,8 @@ import { type ChangeEvent, type FormEvent, useState } from 'react';
 import { ArrowLeft } from 'phosphor-react';
 
 import { api } from '../../../lib/api';
+import { type FeedbackType, FEEDBACK_TYPES } from '../../../utils/feedback';
 
-import { type FeedbackType, FEEDBACK_TYPES } from '..';
 import { CloseButton } from '../../CloseButton';
 import { ScreenshotButton } from '../ScreenshotButton';
 import { Loading } from '../../Loading';
@@ -14,7 +14,7 @@ type FeedbackContentStepProps = {
   onFeedbackSent: () => void;
 };
 
-function FeedbackContentStep({
+export function FeedbackContentStep({
   feedbackType,
   onFeedbackRestart,
   onFeedbackSent,
@@ -124,5 +124,3 @@ function FeedbackContentStep({
     </>
   );
 }
-
-export { FeedbackContentStep };

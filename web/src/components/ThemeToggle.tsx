@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState } from 'react';
 import { Switch } from '@headlessui/react';
 
-function ThemeToggle() {
+export function ThemeToggle() {
   const [darkThemeEnabled, setDarkThemeEnabled] = useState(false);
 
   function handleToggleDarkTheme(enabled: boolean) {
@@ -57,5 +57,3 @@ function ThemeToggle() {
     </Switch.Group>
   );
 }
-
-export { ThemeToggle };

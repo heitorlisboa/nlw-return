@@ -1,36 +1,12 @@
 import { useState } from 'react';
 
+import { type FeedbackType } from '../../utils/feedback';
+
 import { FeedbackTypeStep } from './Steps/FeedbackTypeStep';
 import { FeedbackContentStep } from './Steps/FeedbackContentStep';
 import { FeedbackSuccessStep } from './Steps/FeedbackSuccessStep';
 
-import bugImageUrl from '../../img/bug.svg';
-import ideaImageUrl from '../../img/idea.svg';
-import thoughtImageUrl from '../../img/thought.svg';
-
-const FEEDBACK_TYPES = {
-  BUG: {
-    title: 'Problema',
-    imageSource: bugImageUrl,
-    placeholder:
-      'Algo não está funcionando bem? Queremos corrigir. Conte com detalhes o que está acontecendo...',
-  },
-  IDEA: {
-    title: 'Ideia',
-    imageSource: ideaImageUrl,
-    placeholder:
-      'Teve uma ideia de melhoria ou de nova funcionalidade? Conta pra gente!',
-  },
-  OTHER: {
-    title: 'Outro',
-    imageSource: thoughtImageUrl,
-    placeholder: 'Queremos te ouvir. O que você gostaria de nos dizer? ',
-  },
-};
-
-type FeedbackType = keyof typeof FEEDBACK_TYPES;
-
-function WidgetForm() {
+export function WidgetForm() {
   const [selectedFeedbackType, setSelectedFeedbackType] =
     useState<FeedbackType | null>(null);
   const [feedbackSent, setFeedbackSent] = useState(false);
@@ -86,5 +62,3 @@ function WidgetForm() {
     </div>
   );
 }
-
-export { WidgetForm, FEEDBACK_TYPES, type FeedbackType };

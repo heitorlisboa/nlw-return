@@ -6,7 +6,9 @@ type FeedbackSuccessStepProps = {
   onFeedbackRestart: () => void;
 };
 
-function FeedbackSuccessStep({ onFeedbackRestart }: FeedbackSuccessStepProps) {
+export function FeedbackSuccessStep({
+  onFeedbackRestart,
+}: FeedbackSuccessStepProps) {
   return (
     <>
       <header>
@@ -36,5 +38,3 @@ function FeedbackSuccessStep({ onFeedbackRestart }: FeedbackSuccessStepProps) {
     </>
   );
 }
-
-export { FeedbackSuccessStep };

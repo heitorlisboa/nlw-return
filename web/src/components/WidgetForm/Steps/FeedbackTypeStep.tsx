@@ -1,11 +1,14 @@
-import { type FeedbackType, FEEDBACK_TYPES } from '..';
+import { type FeedbackType, FEEDBACK_TYPES } from '../../../utils/feedback';
+
 import { CloseButton } from '../../CloseButton';
 
 type FeedbackTypeStepProps = {
   onFeedbackTypeChange: (key: FeedbackType) => void;
 };
 
-function FeedbackTypeStep({ onFeedbackTypeChange }: FeedbackTypeStepProps) {
+export function FeedbackTypeStep({
+  onFeedbackTypeChange,
+}: FeedbackTypeStepProps) {
   return (
     <>
       <header>
@@ -41,5 +44,3 @@ function FeedbackTypeStep({ onFeedbackTypeChange }: FeedbackTypeStepProps) {
     </>
   );
 }
-
-export { FeedbackTypeStep };

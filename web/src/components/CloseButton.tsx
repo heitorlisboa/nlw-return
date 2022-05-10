@@ -1,7 +1,7 @@
 import { Popover } from '@headlessui/react';
 import { X } from 'phosphor-react';
 
-function CloseButton() {
+export function CloseButton() {
   return (
     <Popover.Button
       className="
@@ -17,5 +17,3 @@ function CloseButton() {
     </Popover.Button>
   );
 }
-
-export { CloseButton };

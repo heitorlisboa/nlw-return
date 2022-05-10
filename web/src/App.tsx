@@ -1,7 +1,7 @@
 import { ThemeToggle } from './components/ThemeToggle';
 import { Widget } from './components/Widget';
 
-function App() {
+export function App() {
   return (
     <>
       <ThemeToggle />
@@ -9,5 +9,3 @@ function App() {
     </>
   );
 }
-
-export { App };

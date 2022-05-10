@@ -9,7 +9,7 @@ type ScreenshotButtonProps = {
   onScreenshotTaken: (screenshot: string | null) => void;
 };
 
-function ScreenshotButton({
+export function ScreenshotButton({
   screenshot,
   onScreenshotTaken,
 }: ScreenshotButtonProps) {
@@ -63,5 +63,3 @@ function ScreenshotButton({
     </button>
   );
 }
-
-export { ScreenshotButton };
