@@ -23,7 +23,7 @@ function FeedbackTypeStep({ onFeedbackTypeChange }: FeedbackTypeStepProps) {
               flex-1 min-w-[6rem]
               py-5 w-24
               border-2 border-transparent hover:border-brand-500
-              bg-zinc-800
+              bg-zinc-100 dark:bg-zinc-800
               focus:border-brand-500 rounded-lg focus:outline-none
               focus:ring-0
               transition-colors

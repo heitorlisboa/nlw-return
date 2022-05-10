@@ -22,7 +22,8 @@ function FeedbackSuccessStep({ onFeedbackRestart }: FeedbackSuccessStepProps) {
         <button
           className="
             py-2 px-6 mt-6
-            bg-zinc-800 hover:bg-zinc-700
+            bg-zinc-100 hover:bg-zinc-200
+            dark:bg-zinc-800 dark:hover:bg-zinc-700
             rounded-[0.25rem]
             transition-colors
           "

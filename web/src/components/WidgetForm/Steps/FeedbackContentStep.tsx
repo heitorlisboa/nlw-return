@@ -52,7 +52,8 @@ function FeedbackContentStep({
           className="
             absolute top-4 left-4
             p-1
-            text-zinc-400 hover:text-zinc-100
+            text-zinc-500 hover:text-zinc-800
+            dark:text-zinc-400 dark:hover:text-zinc-100
             transition-colors
           "
           type="button"
@@ -81,12 +82,14 @@ function FeedbackContentStep({
           className="
             w-full h-40 sm:h-28
             bg-transparent
-            border-2
-            border-zinc-600 focus:border-brand-500 rounded-[0.25rem]
+            border-2 rounded-[0.25rem]
+            border-zinc-300 dark:border-zinc-600
+            focus:border-brand-500 dark:focus:border-brand-500
             focus:outline-none focus:ring-0
-            scrollbar scrollbar-thumb-zinc-600 scrollbar-track-transparent
-            scrollbar-custom
-            placeholder-zinc-400 text-zinc-100 resize-none
+            scrollbar scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-600
+            scrollbar-track-transparent scrollbar-custom
+            placeholder-zinc-500 dark:placeholder-zinc-400
+            resize-none
             transition-colors
           "
           placeholder="Conte com detalhes o que está acontecendo..."
@@ -105,7 +108,7 @@ function FeedbackContentStep({
               grid place-items-center
               bg-brand-500 hover:bg-brand-400 focus:bg-brand-400
               disabled:hover:bg-brand-500
-              text-sm leading-6
+              text-on-brand text-sm leading-6
               rounded-[0.25rem]
               disabled:opacity-50
               transition-colors

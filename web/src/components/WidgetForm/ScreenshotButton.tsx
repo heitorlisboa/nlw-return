@@ -34,12 +34,14 @@ function ScreenshotButton({
           p-[0.125rem]
           rounded-[0.25rem]
           bg-cover bg-center
+          text-zinc-500 hover:text-zinc-800
+          dark:text-zinc-400 dark:hover:text-zinc-100
         "
         style={{ backgroundImage: `url(${screenshot})` }}
         type="button"
         onClick={() => onScreenshotTaken(null)}
       >
-        <Trash className="w-4 h-4 text-zinc-400" weight="fill" />
+        <Trash className="w-4 h-4" weight="fill" />
       </button>
     );
   }
@@ -48,8 +50,9 @@ function ScreenshotButton({
     <button
       className="
         p-2
-        bg-zinc-800 hover:bg-zinc-700 focus:bg-zinc-700
-        text-zinc-100
+        bg-zinc-100 hover:bg-zinc-200 focus:bg-zinc-200
+        dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:focus:bg-zinc-700
+        text-zinc-800 dark:text-zinc-100
         rounded-[0.25rem]
         transition-colors
       "

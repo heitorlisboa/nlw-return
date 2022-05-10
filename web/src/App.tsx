@@ -1,7 +1,13 @@
+import { ThemeToggle } from './components/ThemeToggle';
 import { Widget } from './components/Widget';
 
 function App() {
-  return <Widget />;
+  return (
+    <>
+      <ThemeToggle />
+      <Widget />
+    </>
+  );
 }
 
 export { App };

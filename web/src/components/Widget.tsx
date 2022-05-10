@@ -18,6 +18,7 @@ function Widget() {
         className="
           flex group
           p-3
+          drop-shadow-brand
           rounded-full
           bg-brand-500 hover:bg-brand-400
           text-white

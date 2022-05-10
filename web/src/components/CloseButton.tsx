@@ -7,7 +7,8 @@ function CloseButton() {
       className="
         absolute top-4 right-4
         p-1
-        text-zinc-400 hover:text-zinc-100
+        text-zinc-500 hover:text-zinc-800
+        dark:text-zinc-400 dark:hover:text-zinc-100
         transition-colors
       "
       aria-label="Fechar formulário de feedback"

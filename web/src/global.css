@@ -8,17 +8,21 @@
   }
 
   body {
-    @apply bg-[#09090a] text-zinc-100;
+    @apply bg-white dark:bg-[#09090a] text-zinc-800 dark:text-zinc-100;
   }
 
-  :focus {
-    @apply focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900
-      focus:ring-brand-500 focus:outline-none;
+  :focus-visible {
+    @apply outline-none outline-brand-500;
   }
 }
 
 @layer utilities {
   .scrollbar-custom::-webkit-scrollbar-thumb {
-    @apply border-[6px] border-solid border-zinc-900 rounded-full;
+    @apply border-[6px] border-solid border-white dark:border-zinc-900
+      rounded-full;
+  }
+
+  .drop-shadow-brand {
+    filter: drop-shadow(0 8px 24px #8257e540);
   }
 }

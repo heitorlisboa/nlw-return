@@ -46,9 +46,10 @@ function WidgetForm() {
         relative
         w-[calc(100vw-2rem)] sm:w-auto
         p-4 mb-4
-        shadow-lg
+        shadow-2xl
         rounded-2xl
-        bg-zinc-900
+        bg-white
+        dark:bg-zinc-900
       "
     >
       {feedbackSent ? (
@@ -63,11 +64,12 @@ function WidgetForm() {
         />
       )}
 
-      <footer className="text-xs text-zinc-400">
+      <footer className="text-xs text-zinc-500 dark:text-zinc-400">
         Feito com ♥ pela{' '}
         <a
           className="
-            hover:text-zinc-100 focus:text-zinc-100
+            hover:text-zinc-800 focus:text-zinc-800
+            dark:hover:text-zinc-100 dark:focus:text-zinc-100
             underline underline-offset-2
             transition-colors
           "
