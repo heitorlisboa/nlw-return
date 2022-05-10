@@ -92,7 +92,7 @@ function FeedbackContentStep({
             resize-none
             transition-colors
           "
-          placeholder="Conte com detalhes o que está acontecendo..."
+          placeholder={feedbackTypeInfo.placeholder}
           value={comment}
           onChange={handleTextareaChange}
         />
