@@ -25,6 +25,10 @@ export function ScreenshotButton({
     setIsTakingScreenshot(false);
   }
 
+  function handleRemoveScreenshot() {
+    onScreenshotTaken(null);
+  }
+
   if (screenshot) {
     return (
       <button
@@ -39,7 +43,7 @@ export function ScreenshotButton({
         "
         style={{ backgroundImage: `url(${screenshot})` }}
         type="button"
-        onClick={() => onScreenshotTaken(null)}
+        onClick={handleRemoveScreenshot}
       >
         <Trash className="w-4 h-4" weight="fill" />
       </button>
