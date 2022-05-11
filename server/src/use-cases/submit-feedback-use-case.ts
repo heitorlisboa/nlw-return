@@ -1,5 +1,7 @@
-import { MailAdapter } from '../adapters/mail-adapter';
+import { FEEDBACK_TYPES } from '../constants/feedback-types';
+import { HttpError } from '../errors/http-error';
 import type { FeedbacksRepository } from '../repositories/feedbacks-repository';
+import type { MailAdapter } from '../adapters/mail-adapter';
 
 type SubmitFeedbackUseCaseRequest = {
   type: string;
@@ -17,34 +19,71 @@ export class SubmitFeedbackUseCase {
     const { type, comment, screenshot } = request;
 
     if (!type) {
-      throw new Error('Type is required.');
+      throw new HttpError({
+        status: 400,
+        message: 'O tipo do feedback é obrigatório.',
+      });
+    }
+
+    const invalidType = !FEEDBACK_TYPES.includes(type);
+    if (invalidType) {
+      throw new HttpError({
+        status: 400,
+        message: [
+          'Tipo de feedback inválido.',
+          `Os tipos válidos são: ${FEEDBACK_TYPES}.`,
+        ].join('\n'),
+      });
     }
 
     if (!comment) {
-      throw new Error('Comment is required.');
+      throw new HttpError({
+        status: 400,
+        message: 'O comentário do feedback é obrigatório.',
+      });
     }
 
-    if (screenshot && !screenshot.startsWith('data:image/png;base64,')) {
-      throw new Error('Invalid screenshot format.');
+    const invalidScreenshotFormat =
+      screenshot && !screenshot.startsWith('data:image/png;base64,');
+    if (invalidScreenshotFormat) {
+      const tmp = new HttpError({
+        status: 400,
+        message: 'Formato da captura de tela inválido.',
+      });
+      throw tmp;
     }
 
-    await this.feedbacksRepository.create({
-      type,
-      comment,
-      screenshot,
-    });
+    try {
+      await this.feedbacksRepository.create({
+        type,
+        comment,
+        screenshot,
+      });
+    } catch (error) {
+      throw new HttpError({
+        status: 500,
+        message: 'Erro ao criar o feedback em nosso banco de dados.',
+      });
+    }
 
-    await this.mailAdapter.sendMail({
-      subject: 'Novo feedback',
-      body: [
-        `<div style="font-family: sans-serif; font-size: 16px; color: #111;">`,
-        `  <p>Tipo do feedback: ${type}</p>`,
-        `  <p>Comentário: ${comment}</p>`,
-        screenshot ? `  <img src="${screenshot}" />` : null,
-        `</div>`,
-      ]
-        .filter(Boolean)
-        .join('\n'),
-    });
+    try {
+      await this.mailAdapter.sendMail({
+        subject: 'Novo feedback',
+        body: [
+          `<div style="font-family: sans-serif; font-size: 16px; color: #111;">`,
+          `  <p>Tipo do feedback: ${type}</p>`,
+          `  <p>Comentário: ${comment}</p>`,
+          screenshot ? `  <img src="${screenshot}" />` : null,
+          `</div>`,
+        ]
+          .filter(Boolean)
+          .join('\n'),
+      });
+    } catch (error) {
+      throw new HttpError({
+        status: 500,
+        message: 'Erro ao enviar o feedback ao nosso time.',
+      });
+    }
   }
 }

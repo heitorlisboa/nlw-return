@@ -38,7 +38,17 @@ describe('Submit feedback', () => {
         comment: 'example comment',
         screenshot: 'data:image/png;base64,exampleScreenshot',
       })
-    ).rejects.toThrow(/type/i);
+    ).rejects.toThrow(/tipo/i);
+  });
+
+  it('should not be able to submit a feedback with an invalid type', async () => {
+    await expect(
+      submitFeedbackUseCase.execute({
+        type: 'TEST',
+        comment: 'example comment',
+        screenshot: 'data:image/png;base64,exampleScreenshot',
+      })
+    ).rejects.toThrow(/inválido/i);
   });
 
   it('should not be able to submit a feedback without comment', async () => {
@@ -48,7 +58,7 @@ describe('Submit feedback', () => {
         comment: '',
         screenshot: 'data:image/png;base64,exampleScreenshot',
       })
-    ).rejects.toThrow(/comment/i);
+    ).rejects.toThrow(/comentário/i);
   });
 
   it('should not be able to submit a feedback with an invalid screenshot', async () => {
@@ -58,6 +68,44 @@ describe('Submit feedback', () => {
         comment: 'example comment',
         screenshot: 'test.png',
       })
-    ).rejects.toThrow(/screenshot/i);
+    ).rejects.toThrow(/(tela|print)/i);
+  });
+
+  it('should throw when the database insertion fails', async () => {
+    const submitFeedbackUseCaseWithEmailError = new SubmitFeedbackUseCase(
+      {
+        create: () => {
+          throw new Error('');
+        },
+      },
+      { sendMail: jest.fn() }
+    );
+
+    await expect(
+      submitFeedbackUseCaseWithEmailError.execute({
+        type: 'BUG',
+        comment: 'example comment',
+        screenshot: 'data:image/png;base64,exampleScreenshot',
+      })
+    ).rejects.toThrow(/banco de dados/i);
+  });
+
+  it('should throw when the email service fails', async () => {
+    const submitFeedbackUseCaseWithEmailError = new SubmitFeedbackUseCase(
+      { create: jest.fn() },
+      {
+        sendMail: () => {
+          throw new Error('');
+        },
+      }
+    );
+
+    await expect(
+      submitFeedbackUseCaseWithEmailError.execute({
+        type: 'BUG',
+        comment: 'example comment',
+        screenshot: 'data:image/png;base64,exampleScreenshot',
+      })
+    ).rejects.toThrow(/enviar/i);
   });
 });
