@@ -76,7 +76,7 @@ export class SubmitFeedbackUseCase {
         body: [
           `<div style="font-family: sans-serif; font-size: 16px; color: #111;">`,
           `  <p>Tipo do feedback: ${
-            FEEDBACK_TYPES_WITH_TITLE[type as FeedbackType]
+            FEEDBACK_TYPES_WITH_TITLE[type as FeedbackType].title
           }</p>`,
           `  <p>Comentário: ${comment}</p>`,
           screenshot ? `  <img src="${screenshot}" />` : null,
