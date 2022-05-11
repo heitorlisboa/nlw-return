@@ -1,5 +1,6 @@
 import { type ChangeEvent, type FormEvent, useState } from 'react';
 import { ArrowLeft } from 'phosphor-react';
+import { AxiosError } from 'axios';
 
 import { api } from '../../../lib/api';
 import { type FeedbackType, FEEDBACK_TYPES } from '../../../utils/feedback';
@@ -35,13 +36,35 @@ export function FeedbackContentStep({
 
     setIsSendingFeedback(true);
 
-    await api.post('/feedbacks', {
-      type: feedbackTypeInfo.title,
-      comment: comment.trim(),
-      screenshot,
-    });
+    try {
+      await api.post('/feedbacks', {
+        type: feedbackType,
+        comment: comment.trim(),
+        screenshot,
+      });
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        // Network error
+        if (error.code === 'ERR_NETWORK') {
+          alert(
+            'Sem conexão ou servidor fora do ar, tente novamente mais tarde.'
+          );
+          return;
+        }
+        // Response error
+        const responseError: string | undefined = error.response?.data.error;
+        if (responseError) {
+          alert(responseError);
+          return;
+        }
+      }
+      // Unknown error
+      alert('Erro desconhecido ao enviar feedback.');
+      return;
+    } finally {
+      setIsSendingFeedback(false);
+    }
 
-    setIsSendingFeedback(false);
     onFeedbackSent();
   }
 
