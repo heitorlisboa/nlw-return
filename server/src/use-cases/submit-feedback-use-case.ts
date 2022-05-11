@@ -1,4 +1,7 @@
-import { FEEDBACK_TYPES } from '../constants/feedback-types';
+import {
+  FEEDBACK_TYPES_WITH_TITLE,
+  type FeedbackType,
+} from '@monorepo-shared/constants';
 import { HttpError } from '../errors/http-error';
 import type { FeedbacksRepository } from '../repositories/feedbacks-repository';
 import type { MailAdapter } from '../adapters/mail-adapter';
@@ -25,6 +28,7 @@ export class SubmitFeedbackUseCase {
       });
     }
 
+    const FEEDBACK_TYPES = Object.keys(FEEDBACK_TYPES_WITH_TITLE);
     const invalidType = !FEEDBACK_TYPES.includes(type);
     if (invalidType) {
       throw new HttpError({
@@ -71,7 +75,9 @@ export class SubmitFeedbackUseCase {
         subject: 'Novo feedback',
         body: [
           `<div style="font-family: sans-serif; font-size: 16px; color: #111;">`,
-          `  <p>Tipo do feedback: ${type}</p>`,
+          `  <p>Tipo do feedback: ${
+            FEEDBACK_TYPES_WITH_TITLE[type as FeedbackType]
+          }</p>`,
           `  <p>Comentário: ${comment}</p>`,
           screenshot ? `  <img src="${screenshot}" />` : null,
           `</div>`,

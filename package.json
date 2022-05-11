@@ -2,7 +2,8 @@
   "private": true,
   "workspaces": [
     "web",
-    "server"
+    "server",
+    "shared/*"
   ],
   "scripts": {
     "prepare": "husky install",

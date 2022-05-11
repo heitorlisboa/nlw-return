@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@monorepo/web",
   "version": "0.1.0",
   "license": "GPL-3.0-only",
   "scripts": {
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.6.0",
+    "@monorepo-shared/constants": "*",
     "axios": "^0.27.2",
     "html2canvas": "^1.4.1",
     "phosphor-react": "^1.4.1",

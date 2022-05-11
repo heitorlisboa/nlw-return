@@ -3,7 +3,8 @@ import { ArrowLeft } from 'phosphor-react';
 import { AxiosError } from 'axios';
 
 import { api } from '../../../lib/api';
-import { type FeedbackType, FEEDBACK_TYPES } from '../../../utils/feedback';
+import { FEEDBACK_TYPES } from '../../../utils/feedback';
+import { type FeedbackType } from '@monorepo-shared/constants';
 
 import { CloseButton } from '../../CloseButton';
 import { ScreenshotButton } from '../ScreenshotButton';
