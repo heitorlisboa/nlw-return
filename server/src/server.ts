@@ -5,8 +5,7 @@ import { router } from './router';
 const app = express();
 const PORT = process.env.PORT ?? 4000;
 
-// TODO: Change cors origin to the website address when it is hosted
-app.use(cors());
+app.use(cors({ origin: process.env.CLIENT_URL ?? 'http://localhost:3000' }));
 app.use(express.json());
 app.use(router);
 
