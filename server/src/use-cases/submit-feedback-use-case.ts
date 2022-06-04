@@ -74,12 +74,20 @@ export class SubmitFeedbackUseCase {
       await this.mailAdapter.sendMail({
         subject: 'Novo feedback',
         body: [
-          `<div style="font-family: sans-serif; font-size: 16px; color: #111;">`,
-          `  <p>Tipo do feedback: ${
-            FEEDBACK_TYPES_WITH_TITLE[type as FeedbackType].title
-          }</p>`,
-          `  <p>Comentário: ${comment}</p>`,
-          screenshot ? `  <img src="${screenshot}" />` : null,
+          `<div style="
+            font-family: sans-serif;
+            font-size: 16px;
+            color: #111;
+          ">`,
+          `<p>
+            Tipo do feedback: <strong>${
+              FEEDBACK_TYPES_WITH_TITLE[type as FeedbackType].title
+            }</strong>
+          </p>`,
+          `<p>Comentário: ${comment}</p>`,
+          screenshot
+            ? `<img style="max-height: 20rem;" src="${screenshot}" />`
+            : null,
           `</div>`,
         ]
           .filter(Boolean)
