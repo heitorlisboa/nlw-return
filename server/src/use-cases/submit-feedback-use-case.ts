@@ -50,11 +50,10 @@ export class SubmitFeedbackUseCase {
     const invalidScreenshotFormat =
       screenshot && !screenshot.startsWith('data:image/png;base64,');
     if (invalidScreenshotFormat) {
-      const tmp = new HttpError({
+      throw new HttpError({
         status: 400,
         message: 'Formato da captura de tela inválido.',
       });
-      throw tmp;
     }
 
     try {

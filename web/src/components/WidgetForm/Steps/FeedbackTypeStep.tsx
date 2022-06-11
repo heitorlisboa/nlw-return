@@ -1,5 +1,5 @@
 import { FEEDBACK_TYPES } from '../../../utils/feedback';
-import { type FeedbackType } from '@monorepo-shared/constants';
+import type { FeedbackType } from '@monorepo-shared/constants';
 
 import { CloseButton } from '../../CloseButton';
 

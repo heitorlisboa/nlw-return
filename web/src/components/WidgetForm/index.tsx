@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { type FeedbackType } from '@monorepo-shared/constants';
+import type { FeedbackType } from '@monorepo-shared/constants';
 
 import { FeedbackTypeStep } from './Steps/FeedbackTypeStep';
 import { FeedbackContentStep } from './Steps/FeedbackContentStep';

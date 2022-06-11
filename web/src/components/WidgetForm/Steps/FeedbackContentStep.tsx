@@ -4,7 +4,7 @@ import { AxiosError } from 'axios';
 
 import { api } from '../../../lib/api';
 import { FEEDBACK_TYPES } from '../../../utils/feedback';
-import { type FeedbackType } from '@monorepo-shared/constants';
+import type { FeedbackType } from '@monorepo-shared/constants';
 
 import { CloseButton } from '../../CloseButton';
 import { ScreenshotButton } from '../ScreenshotButton';
@@ -22,7 +22,7 @@ export function FeedbackContentStep({
   onFeedbackSent,
 }: FeedbackContentStepProps) {
   const [screenshot, setScreenshot] = useState<string | null>(null);
-  const [comment, setComment] = useState<string>('');
+  const [comment, setComment] = useState('');
   const [isSendingFeedback, setIsSendingFeedback] = useState(false);
 
   const feedbackTypeInfo = FEEDBACK_TYPES[feedbackType];
