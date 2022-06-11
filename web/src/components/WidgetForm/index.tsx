@@ -33,16 +33,16 @@ export function WidgetForm() {
         dark:bg-zinc-900
       "
     >
-      {feedbackSent ? (
-        <FeedbackSuccessStep onFeedbackRestart={handleFeedbackRestart} />
-      ) : !selectedFeedbackType ? (
+      {!selectedFeedbackType ? (
         <FeedbackTypeStep onFeedbackTypeChange={setSelectedFeedbackType} />
-      ) : (
+      ) : !feedbackSent ? (
         <FeedbackContentStep
           feedbackType={selectedFeedbackType}
           onFeedbackRestart={handleFeedbackRestart}
           onFeedbackSent={handleFeedbackSent}
         />
+      ) : (
+        <FeedbackSuccessStep onFeedbackRestart={handleFeedbackRestart} />
       )}
 
       <footer className="text-xs text-zinc-500 dark:text-zinc-400">
