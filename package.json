@@ -3,6 +3,7 @@
   "workspaces": [
     "web",
     "server",
+    "mobile",
     "shared/*"
   ],
   "scripts": {
